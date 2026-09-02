@@ -1,0 +1,42 @@
+[package]
+name = "pathgen"
+version = "0.1.1"
+edition = "2021"
+description = "Path policy kernel: semantic app path roles, dev/test/prod separation, safe joins, root remapping and audit receipts, with optional file and SQL sinks."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/jameshuntt/pathgen"
+keywords = ["path", "filesystem", "policy", "xdg", "config"]
+categories = ["filesystem", "config"]
+readme = "README.md"
+
+[lib]
+name = "pathgen"
+path = "src/lib.rs"
+
+[features]
+default = []
+workspace = []
+serde = ["pathgen_core/serde"]
+io = ["dep:pathgen_io"]
+file-json = ["io", "pathgen_io/file-json"]
+file-toml = ["io", "pathgen_io/file-toml"]
+file-yaml = ["io", "pathgen_io/file-yaml"]
+file-txt = ["io", "pathgen_io/file-txt"]
+file-jsonl = ["io", "pathgen_io/file-jsonl"]
+file-xml = ["io", "pathgen_io/file-xml"]
+file-markdown = ["io", "pathgen_io/file-markdown"]
+file-cbor = ["io", "pathgen_io/file-cbor"]
+file-docx = ["io", "pathgen_io/file-docx"]
+file-pdf = ["io", "pathgen_io/file-pdf"]
+file-npy = ["io", "pathgen_io/file-npy"]
+file-npz = ["io", "pathgen_io/file-npz"]
+sql-sqlite = ["io", "pathgen_io/sql-sqlite"]
+macros = ["dep:pathgen_macros"]
+derive = ["macros"]
+all-file = ["file-json", "file-toml", "file-yaml", "file-txt", "file-jsonl", "file-xml", "file-markdown", "file-cbor", "file-docx", "file-pdf", "file-npy", "file-npz"]
+all-local = ["all-file", "sql-sqlite"]
+
+[dependencies]
+pathgen_core = { package = "pathgen-core", version = "0.1.1", path = "../pathgen-core", default-features = false }
+pathgen_io = { package = "pathgen-io", version = "0.1.1", path = "../pathgen-io", optional = true, default-features = false }
+pathgen_macros = { package = "pathgen-macros", version = "0.1.1", path = "../pathgen-macros", optional = true }

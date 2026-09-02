@@ -1,0 +1,47 @@
+[package]
+name = "pathgen-io"
+version = "0.1.1"
+edition = "2021"
+description = "Feature-backed file and SQL sinks and codecs for pathgen-core artifact routes."
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/jameshuntt/pathgen"
+keywords = ["path", "filesystem", "artifact", "sink"]
+categories = ["filesystem"]
+readme = "README.md"
+
+[lib]
+name = "pathgen_io"
+path = "src/lib.rs"
+
+[features]
+default = []
+serde = ["dep:serde"]
+file-json = ["serde", "dep:serde_json"]
+file-toml = ["serde", "dep:toml"]
+file-yaml = ["serde", "dep:serde_yaml"]
+file-txt = []
+file-jsonl = ["file-json"]
+file-xml = ["dep:xmltree"]
+file-markdown = ["file-txt"]
+file-cbor = ["serde", "dep:serde_cbor"]
+file-docx = []
+file-pdf = []
+file-npy = []
+file-npz = []
+sql-sqlite = ["serde", "dep:rusqlite"]
+all-file = ["file-json", "file-toml", "file-yaml", "file-txt", "file-jsonl", "file-xml", "file-markdown", "file-cbor", "file-docx", "file-pdf", "file-npy", "file-npz"]
+all-local = ["all-file", "sql-sqlite"]
+
+[dependencies]
+pathgen_core = { package = "pathgen-core", version = "0.1.0", path = "../pathgen-core", default-features = false }
+serde = { version = "1", optional = true, features = ["derive"] }
+serde_json = { version = "1", optional = true }
+toml = { version = "0.8", optional = true }
+serde_yaml = { version = "0.9", optional = true }
+xmltree = { version = "0.11", optional = true }
+serde_cbor = { version = "0.11", optional = true }
+rusqlite = { version = "0.32", optional = true }
+sha2 = "0.10"
+
+[dev-dependencies]
+tempfile = "3"
