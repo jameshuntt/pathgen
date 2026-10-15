@@ -4,11 +4,11 @@ version = 4
 
 [[package]]
 name = "pathgen-core"
-version = "0.1.1"
+version = "0.1.2"
 
 [[package]]
 name = "pathgen-macros"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "pathgen-core",
  "proc-macro2",

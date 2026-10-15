@@ -1,6 +1,6 @@
 [package]
 name = "pathgen"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Path policy kernel: semantic app path roles, dev/test/prod separation, safe joins, root remapping and audit receipts, with optional file and SQL sinks."
 license = "MIT OR Apache-2.0"
