@@ -2,6 +2,7 @@
 name = "pathgen-io"
 version = "0.1.2"
 edition = "2021"
+rust-version = "1.78"
 description = "Feature-backed file and SQL sinks and codecs for pathgen-core artifact routes."
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/jameshuntt/pathgen"
